@@ -1,0 +1,34 @@
+import api from '@/assets/globals/api';
+import configs from '@/assets/config/app.config';
+
+var promise;
+
+export default class UserService {
+    
+    async list() {
+        promise = await api.client.get(configs.end_point.users);
+        return promise;
+    }
+
+    // store(data) {
+    //     promise = api.client.post(config.end_point.admin.e_commerce.size_options, data);
+    //     return promise;
+    // }
+    //
+    // update(id, data) {
+    //     promise = api.client.put(config.end_point.admin.e_commerce.size_options + '/' + id, data);
+    //     return promise;
+    // }
+
+    async show(id) {
+        promise = await api.client.get(`${configs.end_point.users}/${id}`);
+        return promise;
+    }
+    //
+    // delete(id) {
+    //     promise = api.client.delete(config.end_point.admin.e_commerce.size_options + '/' + id);
+    //     return promise;
+    // }
+}
+
+export const userService = new UserService();
